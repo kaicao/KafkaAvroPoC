@@ -1,4 +1,4 @@
-package org.kaikai.kafkaavro;
+package org.kaikai.kafkaavro.kafka;
 
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.TopicPartition;

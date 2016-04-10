@@ -1,14 +1,22 @@
 package org.kaikai.kafkaavro;
 
+import org.kaikai.kafkaavro.kafka.KafkaAvroConsumer;
+import org.kaikai.kafkaavro.kafka.KafkaAvroProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Created by kaicao on 03/04/16.
  */
+// http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-auto-configuration
+// @SpringBootApplication is same as @Configuration @EnableAutoConfiguration @ComponentScan
+@SpringBootApplication // better to be marked in the root package level so all underlying packages will be scanned automatically
 public class ApplicationMain {
 
   private static final Logger LOG = LoggerFactory.getLogger(ApplicationMain.class);
@@ -16,6 +24,11 @@ public class ApplicationMain {
   private static final AtomicBoolean keepRunning = new AtomicBoolean(true);
 
   public static void main(String[] args) throws Exception {
+    //testKafka();
+    SpringApplication.run(ApplicationMain.class, args);
+  }
+
+  private static void testKafka() throws Exception {
     LOG.info("Start producer and consumer");
     KafkaAvroProducer producer = KafkaAvroProducer.getInstance();
     KafkaAvroConsumer consumer = KafkaAvroConsumer.getInstance();

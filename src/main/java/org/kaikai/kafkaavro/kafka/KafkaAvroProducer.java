@@ -1,8 +1,11 @@
-package org.kaikai.kafkaavro;
+package org.kaikai.kafkaavro.kafka;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -11,6 +14,8 @@ import java.util.Properties;
 /**
  * Created by kaicao on 03/04/16.
  */
+@Component
+@Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class KafkaAvroProducer implements Closeable {
 
   private static final KafkaAvroProducer INSTANCE = new KafkaAvroProducer();
@@ -18,7 +23,7 @@ public class KafkaAvroProducer implements Closeable {
   private Producer<String, String> producer;
   private String topicName;
 
-  private KafkaAvroProducer() {
+  public KafkaAvroProducer() {
   }
 
   public static KafkaAvroProducer getInstance() {
