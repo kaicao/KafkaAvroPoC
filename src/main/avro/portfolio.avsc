@@ -1,0 +1,29 @@
+[
+// Order matters, must specify underlying model schema first
+{
+    "namespace": "org.kaikai.kafkaavro.avro.model",
+    "type": "record",
+    "name": "SecurityAvro",
+    "fields": [
+        {"name": "id", "type": "string"},
+        {"name": "name", "type": "string"}
+    ]
+},
+{
+    "namespace": "org.kaikai.kafkaavro.avro.model",
+    "type": "record",
+    "name": "PortfolioAvro",
+    "fields": [
+        {"name": "id", "type": "string"},
+        {"name": "name", "type": "string"},
+        {"name": "description", "type": ["string", "null"]},
+        {
+            "name": "securities",
+            "type": {
+                "type": "map",
+                "values": "org.kaikai.kafkaavro.avro.model.SecurityAvro"
+            }
+        }
+    ]
+}
+]

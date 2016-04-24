@@ -10,8 +10,8 @@ zookeeper-server-start.sh config/zookeeper.properties
 # 2. start kafka
 kafka-server-start.sh config/server.properties
 
-# Start application
-open in IntelliJ and run ApplicationMain
+# Try out Kafka test application
+open in IntelliJ and run KafkaTestMain
 
 # REST APIs
 REST APIs are implemented with Jersey base on JAX-RS specification
